@@ -1,0 +1,106 @@
+lorenzo@lorenzo-X550LA:~/Escritorio/git-workshop$ cd ..
+lorenzo@lorenzo-X550LA:~/Escritorio$ git init "git-practice"
+Initialized empty Git repository in /home/lorenzo/Escritorio/git-practice/.git/
+lorenzo@lorenzo-X550LA:~/Escritorio$ git status
+fatal: Not a git repository (or any of the parent directories): .git
+lorenzo@lorenzo-X550LA:~/Escritorio$ git add .
+fatal: Not a git repository (or any of the parent directories): .git
+lorenzo@lorenzo-X550LA:~/Escritorio$ git status
+fatal: Not a git repository (or any of the parent directories): .git
+lorenzo@lorenzo-X550LA:~/Escritorio$ cd git-practice
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ ls
+three_doors.txt
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git add .
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git status
+En la rama master
+
+Commit inicial
+
+Cambios para hacer commit:
+  (use «git rm --cached <archivo>...» para sacar del stage)
+
+	nuevo archivo: three_doors.txt
+
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git commit -a -m "first commit"
+[master (root-commit) 3be5ba0] first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 three_doors.txt
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git commit -a -m "second commit chose door"
+En la rama master
+Archivos sin seguimiento:
+	three_doors
+
+no se ha agregado nada al commit pero existen archivos sin seguimiento
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git log
+commit 3be5ba03204d09c35a2c8b4d71b6025adc95cadd
+Author: Lorenzo Gimeno <lorenzo.gimeno.ruiz@gmail.com>
+Date:   Mon May 30 14:59:30 2016 +0200
+
+    first commit
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git log --oneline
+3be5ba0 first commit
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git add .
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git commit -m "chose door@
+> q
+> "
+[master 9751791] chose door@ q
+ 1 file changed, 2 insertions(+)
+ create mode 100644 three_doors
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git log --oneline
+9751791 chose door@ q
+3be5ba0 first commit
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git diff
+diff --git a/three_doors b/three_doors
+index e3e8e5b..b775b8d 100644
+--- a/three_doors
++++ b/three_doors
+@@ -1,2 +1,3 @@
+ You are in a room with three doors.
+-Which door will you go through?
+\ No newline at end of file
++Which door will you go through?
++I will chose the first door 
+\ No newline at end of file
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git add first_choice.txt
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git commit first?choice.txt
+[master 3f10d22] First Choice
+ 1 file changed, 11 insertions(+)
+ create mode 100644 first_choice.txt
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git add second_choice.txt
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git commit -m "Second choice"
+[master ce7fa76] Second choice
+ 1 file changed, 1 insertion(+)
+ create mode 100644 second_choice.txt
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git add second_choice.txt
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git commit second_choice.txt -m "behind the door"
+[master b4aa0ba] behind the door
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git log --oneline
+b4aa0ba behind the door
+ce7fa76 Second choice
+3f10d22 First Choice
+9751791 chose door@ q
+3be5ba0 first commit
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git branch
+* master
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git branch new
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git branch
+* master
+  new
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git checkout new
+M	three_doors
+Switched to branch 'new'
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git commit second_choice.txt
+[new 489d972] Dog behind the door
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git branch master
+fatal: Ya existe una rama con el nombre «master».
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git checkout master
+M	three_doors
+Switched to branch 'master'
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ git merge new
+Updating b4aa0ba..489d972
+Fast-forward
+ second_choice.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+lorenzo@lorenzo-X550LA:~/Escritorio/git-practice$ 
